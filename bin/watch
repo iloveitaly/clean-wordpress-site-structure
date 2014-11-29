@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if [ -d app/themes/roots-child ]; then
+	cd app/themes/roots-child
+	npm install
+	grunt watch
+fi
+
+# TODO support any child

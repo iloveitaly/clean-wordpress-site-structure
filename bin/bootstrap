@@ -1,0 +1,47 @@
+#!/bin/bash
+
+cd `dirname $0`
+cd ..
+
+echo "Pulling git submodules..."
+git submodule update --init --recursive
+
+echo "Running composer install"
+composer update && composer install
+
+if [ $? -ne 0 ]; then
+	echo "Error running composer"
+	exit 1
+fi
+
+if [ -d app/themes/roots ]; then
+	echo "Compiling roots parent theme"
+	$(cd app/themes/roots && npm install > /dev/null && grunt build > /dev/null)
+fi
+
+# TODO this isn't used anywhere
+ip_address=`ifconfig | grep inet | grep -v inet6 | grep 192 | awk '{print $2}'`
+
+local_subdomain=`basename $PWD`
+home_url=http://"$local_subdomain".wp.dev/
+
+export HTTP_HOST=$home_url
+
+wp db create
+
+if ! wp core is-installed; then
+	echo "Installing WordPress + Activating Theme"
+	wp core install --title="WordPress Site" --admin_user=admin --admin_password=password --admin_email=admin@domain.com --url="$home_url"
+
+	echo "Activating theme"
+	if [ -d app/themes/roots-child ]; then
+		wp theme activate roots-child
+	else
+		wp theme activate `wp theme list --field=name|head -1`
+	fi
+fi
+
+wp option --path=wp set siteurl $home_url/wp
+wp option --path=wp set home $home_url
+
+open $home_url

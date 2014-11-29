@@ -1,0 +1,8 @@
+#!/bin/bash
+
+cd `dirname $0`
+cd ..
+
+ssh_connection=user@domain.com
+rsync -avr --exclude node_modules --exclude '.git' --delete -e ssh $PWD/app/plugins/ $ssh_connection:~/html/wp-content/plugins
+rsync -avr --exclude node_modules --exclude '.git' --delete -e ssh $PWD/app/themes/ $ssh_connection:~/html/wp-content/themes
