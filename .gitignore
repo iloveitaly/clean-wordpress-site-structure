@@ -1,2 +1,4 @@
 wp/
 vendor/
+app/themes/roots/
+app/themes/roots-child/node_modules
