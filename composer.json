@@ -1,0 +1,78 @@
+{
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "http://wpackagist.org"
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "wordpress/wordpress",
+        "version": "4.0.1",
+        "type": "webroot",
+        "dist": {
+          "type": "zip",
+          "url": "https://wordpress.org/wordpress-4.0.1.zip"
+        },
+        "require" : {
+          "fancyguy/webroot-installer": "1.1.0"
+        }
+      }
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "roots",
+        "type": "wordpress-theme",
+        "version": "7.0.1",
+        "dist": {
+          "type": "zip",
+          "url": "https://github.com/roots/roots/zipball/master"
+        }
+      }
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "roots-rewrites",
+        "type": "wordpress-plugin",
+        "version": "1.0.1",
+        "dist": {
+          "type": "zip",
+          "url": "https://github.com/roots/roots-rewrites/zipball/master"
+        }
+      }
+    }
+  ],
+  "require": {
+    "php": ">=5.3.2",
+    "roots": "7.0.1",
+    "roots/soil": "3.0.0",
+    "roots-rewrites": "1.0.1",
+    "wordpress/wordpress": "4.0.1",
+    "fancyguy/webroot-installer": "1.1.0",
+    "composer/installers": "v1.0.12",
+    "wpackagist-plugin/disqus-comment-system": "~2.74",
+    "wpackagist-plugin/redirection": "2.3.6",
+    "wpackagist-plugin/wordpress-seo": "~1.5.4.2",
+    "wpackagist-plugin/nrelate-related-content": "~1.2.0",
+    "wpackagist-plugin/swiftype-search": "~1.1.35",
+    "wpackagist-plugin/latest-tweets-widget": "~1.1.2",
+    "wpackagist-plugin/google-analytics-for-wordpress": "~4.3.5",
+    "wpackagist-plugin/wp-missed-schedule": "*",
+    "wpackagist-plugin/leenkme": "2.2.1",
+    "wpackagist-plugin/wp-retina-2x": "~2.0.2",
+    "wpackagist-plugin/shortcurl": "~3.04.26",
+    "wpackagist-plugin/simple-local-avatars": "~2.0",
+    "wpackagist-plugin/goalwp": "~1.1.1",
+    "wpackagist-plugin/jetpack": "~3.1.1"
+  },
+  "extra": {
+    "installer-paths": {
+      "app/plugins/{$name}/": ["type:wordpress-plugin"],
+      "app/themes/{$name}/": ["type:wordpress-theme"]
+    },
+    "webroot-dir": "wp",
+    "webroot-package": "wordpress/wordpress"
+  }
+}
