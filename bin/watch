@@ -1,5 +1,8 @@
 #!/bin/bash
 
+cd `dirname $0`
+cd ..
+
 if [ -d app/themes/roots-child ]; then
 	cd app/themes/roots-child
 	npm install
