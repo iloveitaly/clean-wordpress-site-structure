@@ -88,8 +88,7 @@ module.exports = function(grunt) {
     watch: {
       less: {
         files: [
-          'assets/less/*.less',
-          'assets/less/**/*.less'
+          '**/*.less'
         ],
         tasks: ['less:dev', 'autoprefixer:dev']
       },
@@ -103,7 +102,7 @@ module.exports = function(grunt) {
         // Browser live reloading
         // https://github.com/gruntjs/grunt-contrib-watch#live-reloading
         options: {
-          livereload: false
+          livereload: true
         },
         files: [
           'style.css',
