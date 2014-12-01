@@ -15,9 +15,17 @@
  * @package WordPress
  */
 
-define( 'ABSPATH', dirname(__FILE__) . '/wp/');
+// http://codex.wordpress.org/Editing_wp-config.php
+
+define( 'ABSPATH', dirname(__FILE__) . 'wp');
 define( 'WP_CONTENT_DIR', dirname( __FILE__ ) . '/app' );
 define( 'WP_CONTENT_URL', 'http://' . $_SERVER['HTTP_HOST'] . '/app' );
+
+define( 'WP_HOME',    'http://' . $_SERVER['HTTP_HOST'] . '/' );
+define( 'WP_SITEURL', 'http://' . $_SERVER['HTTP_HOST'] . '/wp/' );
+
+// enabling this will output more errors
+// define ('WP_ADMIN', true);
 
 define('DB_NAME', basename(dirname(__FILE__)));
 define('DB_USER', 'root');
