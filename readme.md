@@ -19,6 +19,9 @@ Make sure you have the following installed.
 * http://wpackagist.org
 * http://roots.io/wordpress-plugins-with-composer/
 * http://composer.rarst.net
+* http://76design.com/bootstrapping-wordpress-with-composer/
+* https://github.com/Tarendai/composerpress - create a composer.json from an existing wordpress install
+* http://wordpress.tv/2013/12/13/andrey-rarst-savchenko-better-site-stacks-with-composer/
 
 # Database
 
