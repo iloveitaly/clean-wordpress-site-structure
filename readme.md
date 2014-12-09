@@ -1,8 +1,16 @@
+# About
+
+Some ideas/concepts grabbed from the [Roots theme](http://roots.io). 
+
+WordPress development is often hard to manage. The idea with this structure is:
+
+* To enable new devs to easily setup a dev env (`bin/setup`)
+* Optimized development loop with `bin/watch`
+* Dependency management with Composer
+* Reduce git churn by including WordPress + Plugins as depdendencies that are not commited to the repository
+* Easily update production envoirnment via `bin/update`
+
 # Installation
-
-Some assumptions are based on my [dotfile config](https://github.com/iloveitaly/dotfiles)
-
-Some ideas/concepts grabbed from the [Roots theme](http://roots.io)
 
 Make sure you have the following installed.
 
@@ -12,6 +20,8 @@ Make sure you have the following installed.
 * wp-cli
 * npm
 * grunt
+
+These are all installed for you if you use this [dotfile config](https://github.com/iloveitaly/dotfiles).
 
 # Tools / References
 

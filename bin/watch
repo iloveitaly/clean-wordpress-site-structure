@@ -9,4 +9,4 @@ if [ -d app/themes/roots-child ]; then
 	grunt watch
 fi
 
-# TODO support any child
+# TODO support any child theme
