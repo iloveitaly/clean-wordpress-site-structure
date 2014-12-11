@@ -43,6 +43,22 @@ http://surgeworks.com/blog/general/changing-mysql-socket-to-fix-error-establishi
 
 Run `bin/setup`. You'll get a WP installation with the following credentials:
 
-Email: admin@domain.com
-Username: admin
-Password: password
+Email: admin@domain.com  
+Username: admin  
+Password: password  
+
+# Pushing Updates
+
+You'll need customize `bin/update` with credentials specific to your site. After you've done that, running:
+
+```bash
+bin/update
+```
+
+Will push site changes to staging and running:
+
+```bash
+bin/update production
+```
+
+Will push changes to production.
