@@ -23,6 +23,12 @@ Make sure you have the following installed.
 
 These are all installed for you if you use this [dotfile config](https://github.com/iloveitaly/dotfiles).
 
+## SSH Key Installation on Remote Server
+
+```bash
+cat ~/.ssh/id_rsa.pub | ssh user@domain.com 'mkdir ~/.ssh; touch ~/.ssh/authorized_keys; cat >> ~/.ssh/authorized_keys'
+```
+
 # Tools / References
 
 * https://github.com/fancyguy/webroot-installer
