@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# if wp isn't defined, we are on the remote MediaTemple server
+if ! which -s wp; then
+	PATH=/usr/local/sbin/:$PATH
+
+	cd html
+fi
+
+wp db query 'UPDATE wp_PREFIX_options SET option_value = "http://your.domain.com/" WHERE option_name IN ("siteurl", "home");'
+
+wp role reset administrator
+wp user add-role admin administrator
+
+wp option update image_default_link_type none
+wp option update rss_use_excerpt 0
+wp option update posts_per_page 5
