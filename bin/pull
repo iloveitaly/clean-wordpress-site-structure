@@ -1,0 +1,16 @@
+#!/bin/bash
+
+cd `dirname $0`
+cd ..
+
+source ./bin/server
+
+rsync -avr --exclude node_modules --exclude '.git' -e ssh $ssh_connection:~/html/wp-content/uploads/ $PWD/app/uploads
+
+# mkdir tmp
+
+ssh $ssh_connection '
+bash -s
+cd html
+wp db export -
+' > tmp/remote_db.sql
