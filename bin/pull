@@ -7,10 +7,11 @@ source ./bin/server
 
 rsync -avr --exclude node_modules --exclude '.git' -e ssh $ssh_connection:~/html/wp-content/uploads/ $PWD/app/uploads
 
-# mkdir tmp
+mkdir tmp
 
-ssh $ssh_connection '
-bash -s
-cd html
-wp db export -
-' > tmp/remote_db.sql
+ssh $ssh_connection 'cd html && /usr/local/sbin/wp db export -' > tmp/remote_db.sql
+
+if [ $? -eq 0 ]; then
+	sed -i '' "s/\`wp_hrqg3t2p86_/\`wp_/g" tmp/remote_db.sql
+	wp db import tmp/remote_db.sql
+fi
