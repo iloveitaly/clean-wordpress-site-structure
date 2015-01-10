@@ -1,14 +1,18 @@
 #!/bin/bash
 
-# TODO need to allow prefix customization
+cd `dirname $0`
+cd ..
+
+source ./bin/server
+
 # TODO auto-detect local vs remote prefix
 
 mkdir -p tmp
 wp db export tmp/local_db.sql
-sed -i '' "s/\`wp_/\`wp_hrqg3t2p86_/g" tmp/local_db.sql
+sed -i '' "s/\`wp_/\`$wp_prefix/g" tmp/local_db.sql
 
 # can't set home/siteurl
-# https://github.com/wp-cli/wp-cli/issues/870		
+# https://github.com/wp-cli/wp-cli/issues/870
 ssh $ssh_connection "cd html && /usr/local/sbin/wp db import -" < tmp/local_db.sql
 ssh $ssh_connection 'bash -s' < bin/configure
 

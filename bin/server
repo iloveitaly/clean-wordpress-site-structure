@@ -3,8 +3,11 @@
 # TODO this isn't used anywhere
 ip_address=`ifconfig | grep inet | grep -v inet6 | grep 192 | awk '{print $2}'`
 
+wp_prefix=wp_
 local_subdomain=`basename $PWD`
 home_url=http://"$local_subdomain".wp.dev/
 
 remote_domain=http://domain.com/
 ssh_connection=user@domain.com
+
+[ -d tmp ] || mkdir tmp

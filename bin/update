@@ -3,12 +3,9 @@
 cd `dirname $0`
 cd ..
 
-site_name=`basename $PWD`
-domain=domain.com
+source ./bin/server
 
-if [ "$1" = "production" ]; then
-  ssh_connection=user@production.com
-else
+if [ "$1" != "production" ]; then
   ssh_connection=user@staging.com
 fi
 
