@@ -4,3 +4,4 @@ app/uploads
 app/themes/roots/
 app/themes/roots-child/node_modules
 app/plugins
+tmp/
