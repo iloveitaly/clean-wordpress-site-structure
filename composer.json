@@ -55,7 +55,6 @@
     "wpackagist-plugin/disqus-comment-system": "~2.74",
     "wpackagist-plugin/redirection": "2.3.11",
     "wpackagist-plugin/wordpress-seo": "~1.7.1",
-    "wpackagist-plugin/nrelate-related-content": "~1.3.1",
     "wpackagist-plugin/swiftype-search": "~1.1.35",
     "wpackagist-plugin/latest-tweets-widget": "~1.1.2",
     "wpackagist-plugin/google-analytics-for-wordpress": "~5.1.3",
