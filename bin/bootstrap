@@ -27,7 +27,10 @@ wp db create
 
 if ! wp core is-installed; then
 	echo "Installing WordPress + Activating Theme"
-	wp core install --title="WordPress Site" --admin_user=admin --admin_password=password --admin_email=admin@domain.com --url="$home_url"
+	wp core install \
+	  --title="WordPress Site" \
+	  --admin_user=admin --admin_password=password --admin_email=admin@domain.com \
+	  --url="$home_url"
 
 	echo "Activating theme"
 	if [ -d app/themes/roots-child ]; then

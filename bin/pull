@@ -5,7 +5,9 @@ cd ..
 
 source ./bin/server
 
-rsync -avr --exclude node_modules --exclude '.git' -e ssh $ssh_connection:~/html/wp-content/uploads/ $PWD/app/uploads
+rsync -avr --exclude node_modules --exclude '.git' \
+  -e ssh $ssh_connection:~/html/wp-content/uploads/ \
+  $PWD/app/uploads
 
 ssh $ssh_connection 'cd html && /usr/local/sbin/wp db export -' > tmp/remote_db.sql
 
