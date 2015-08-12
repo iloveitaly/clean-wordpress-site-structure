@@ -13,4 +13,5 @@ rsync -avr --exclude node_modules --exclude '.git' --delete -e ssh $PWD/app/plug
 rsync -avr --exclude node_modules --exclude '.git' --delete -e ssh $PWD/app/themes/ $ssh_connection:~/html/wp-content/themes
 
 # nocache=1 for MediaTemple WordPress Premium
-open $domain/?nocache=1
+open $remote_domain/?nocache=1
+open $remote_domain/wp-admin/widgets.php?GD_COMMAND=FLUSH_CACHE&GD_NONCE=46966cda3e
