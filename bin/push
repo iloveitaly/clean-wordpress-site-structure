@@ -13,8 +13,15 @@ sed -i '' "s/\`wp_/\`$wp_prefix/g" tmp/local_db.sql
 
 # can't set home/siteurl
 # https://github.com/wp-cli/wp-cli/issues/870
+
+# TODO need to error check the SSH connections: they will often fail
+
 ssh $ssh_connection "cd html && /usr/local/sbin/wp db import -" < tmp/local_db.sql
-ssh $ssh_connection 'bash -s' < bin/configure
+
+# export important configuration variables to remote shell session
+ssh $ssh_connection 'export remote_domain='$remote_domain'; export wp_prefix='$wp_prefix'; bash -s' < bin/configure
 
 # push local app images to remote
 rsync -avr --exclude node_modules --exclude '.git' -e ssh $PWD/app/uploads/ $ssh_connection:~/html/wp-content/uploads
+
+bash bin/update
