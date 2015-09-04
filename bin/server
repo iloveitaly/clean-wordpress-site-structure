@@ -4,10 +4,25 @@
 ip_address=`ifconfig | grep inet | grep -v inet6 | grep 192 | awk '{print $2}'`
 
 wp_prefix=wp_
+wp_staging_prefix='wp_staging_'
+
+# NOTE this is dependent on
+#      https://github.com/iloveitaly/dotfiles/blob/82922fbd97269000f9249b29e19cfa1a5d86538f/apache.conf#L59
+
 local_subdomain=`basename $PWD`
 home_url=http://"$local_subdomain".wp.dev/
 
 remote_domain=http://domain.com/
-ssh_connection=user@domain.com
+staging_remote_domain=http://862.9ac.myftpupload.com/
 
-[ -d tmp ] || mkdir tmp
+ssh_connection=user@production.com
+staging_ssh_connection=user@staging.com
+
+
+if [ "$1" != "production" ]; then
+  ssh_connection=$staging_ssh_connection
+  remote_domain=$staging_remote_domain
+  wp_prefix=$wp_staging_prefix
+fi
+
+echo "Configured with: $remote_domain"
